@@ -1,5 +1,6 @@
 package com.qa.api.gorest.restclient;
 
+import java.io.File;
 import java.util.Map;
 import org.testng.annotations.Test;
 
@@ -26,7 +27,7 @@ public class RestClient {
 	 */
 	
 	// GET call
-	public static Response doGet(String contentType, String baseURI, String basePath, String token, Map<String, String> params, boolean log) {
+	public static Response doGet(String contentType, String baseURI, String basePath, Map<String, String> token, Map<String, String> params, boolean log) {
 		if(setBaseURI(baseURI)) {
 		RequestSpecification request = createRequest(contentType, token, params, log);
 		return executeAPI("GET", request, basePath);
@@ -35,7 +36,7 @@ public class RestClient {
 	}
 	
 	// POST call
-	public static Response doPOST(String contentType, String baseURI, String basePath, String token, 
+	public static Response doPOST(String contentType, String baseURI, String basePath, Map<String, String> token, 
 			Map<String, String> params, boolean log, Object obj) {
 				if(setBaseURI(baseURI)) {
 						RequestSpecification request = createRequest(contentType, token, params, log);
@@ -57,11 +58,16 @@ public class RestClient {
 		}
 	}	
 	public static void addRequestPayLoad(RequestSpecification request, Object obj) {
-		String jsonPayload =  TestUtil.getSerializedJSON(obj);
-		request.body(jsonPayload);
+		if(obj instanceof Map) {
+			request.formParams((Map<String, String>) obj);
+		}else {
+			String jsonPayload =  TestUtil.getSerializedJSON(obj);
+			request.body(jsonPayload);
+		}
+		
 	}
 	
-	public static RequestSpecification createRequest(String contentType, String token, Map<String, String> params, boolean log) {
+	public static RequestSpecification createRequest(String contentType, Map<String, String> token, Map<String, String> params, boolean log) {
 		RequestSpecification request;
 		
 		if(log) {
@@ -69,8 +75,9 @@ public class RestClient {
 		}else {
 			request = RestAssured.given();
 		}
-		if(token != null) {
-			request.header("Authorization" , "Bearer " + token);
+		if(token.size() > 0) {
+//			request.header("Authorization" , "Bearer " + token);
+			request.headers(token);
 		}else {
 			System.out.println("Please provide authentication ::: ");
 		}
@@ -83,6 +90,8 @@ public class RestClient {
 				break;
 			case "XML" : request.contentType(ContentType.XML);
 				break;
+			case "multipart" : request.multiPart("image", new File("C:\\Users\\ramesh.biradar\\Pictures\\OnlyRamesh.jpg"));
+			break;
 			default:
 				System.out.println("No Valid content type");
 		}

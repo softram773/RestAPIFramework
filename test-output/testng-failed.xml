@@ -5,7 +5,7 @@
     <classes>
       <class name="com.qa.api.gorest.tests.GetImgurAPI">
         <methods>
-          <include name="getAccountBlockStatus"/>
+          <include name="getAccountBase"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.qa.api.gorest.tests.GetImgurAPI -->

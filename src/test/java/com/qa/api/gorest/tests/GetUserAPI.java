@@ -15,10 +15,13 @@ public class GetUserAPI {
 	String baseURI = "https://gorest.co.in";
 	String basePath = "/public-api/users";
 	String token = "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq";
+	Map<String, String> tokenAuth;
 	
 	@Test(priority = 1)
 	public void getAllUserData() {
-		Response response = RestClient.doGet("JSON", baseURI, basePath, token, null, true);
+		tokenAuth = new HashMap<String, String>();
+		tokenAuth.put("Authorization", token);
+		Response response = RestClient.doGet("JSON", baseURI, basePath, tokenAuth, null, true);
 		System.out.println(response.getStatusCode());
 //		System.out.println(response.prettyPrint());
 	}
@@ -27,7 +30,7 @@ public class GetUserAPI {
 		Map<String, String> paramas = new LinkedHashMap<String, String>();
 		paramas.put("first_name", "Stephanie");
 		paramas.put("last_name", "Brown");
-		Response response = RestClient.doGet("JSON", baseURI, basePath, token, paramas, true);
+		Response response = RestClient.doGet("JSON", baseURI, basePath, tokenAuth, paramas, true);
 		System.out.println(response.prettyPrint());
 	}
 }

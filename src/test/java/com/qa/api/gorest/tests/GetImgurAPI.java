@@ -1,5 +1,6 @@
 package com.qa.api.gorest.tests;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.codehaus.groovy.syntax.TokenMismatchException;
@@ -13,7 +14,8 @@ import io.restassured.response.Response;
 
 public class GetImgurAPI {
 	
-	Map<String, String> tokenMap;
+	Map<Object, Object> tokenMap;
+	Map<String, String> authTokenMap;
 	String accesstoken;
 	String accountusername;
 	String refreshtoken;
@@ -22,21 +24,33 @@ public class GetImgurAPI {
 	@BeforeMethod
 	public void setUp() {
 		tokenMap = Token.getAccessToken();
-		accesstoken = tokenMap.get("access_token");
-		accountusername = tokenMap.get("account_username");
+		accesstoken = tokenMap.get("access_token").toString();
+		accountusername = tokenMap.get("account_username").toString();
 		refreshtoken = tokenMap.get("refresh_token").toString();
 	}
 	
 	@Test
 	public void getAccountBlockStatus() {
-		Response response = RestClient.doGet(null, baseURI, "/account/v1/"+accountusername+"/block", accesstoken, null, true);
+		authTokenMap = Token.getAuthToken();
+		Response response = RestClient.doGet(null, baseURI, "/account/v1/"+accountusername+"/block", authTokenMap, null, true);
 		System.out.println(response.getStatusCode());
 		System.out.println(response.prettyPrint());
 	}
 	@Test
 	public void getAccountBase() {
-		Response response = RestClient.doGet(null, baseURI, "/3/account/"+accountusername, accesstoken, null, true);
+		authTokenMap = Token.getAuthToken();
+		Response response = RestClient.doGet(null, baseURI, "/3/account/"+accountusername, authTokenMap, null, true);
 		System.out.println(response.prettyPrint());
 		System.out.println(response.getStatusCode());
+	}
+	@Test
+	public void uploadImagePostAPITest() {
+		Map<String, String> clientIDMap = Token.getClientID();
+		Map<String, String> formMap = new HashMap<String, String>();
+		formMap.put("title","Image title");
+		formMap.put("description", "Image Description");
+		Response response = RestClient.doPOST("multipart", "https://api.imgur.com", "/3/upload", clientIDMap, null, true, formMap);
+		System.out.println(response.getStatusCode());
+		System.out.println(response.prettyPrint());
 	}
 }
