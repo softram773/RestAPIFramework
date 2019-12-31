@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 
 public class ExcelUtil {
 	
-	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework\\src\\test\\resources\\GorestUserData.xlsx";
+//	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework\\src\\test\\resources\\GorestUserData.xlsx";
+	public static String TESTDATA_FILE_PATH ="/RestAPIFramework/src/test/resources/GorestUserData.xlsx";
 	public static Workbook book;
 	public static Sheet sheet;
 	
