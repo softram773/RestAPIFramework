@@ -13,6 +13,7 @@ import io.restassured.response.Response;
 
 public class CreateUserTest {
 	Map<String, String> tokenAuth;
+	String token = "Bearer " + "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq";
 	@DataProvider
 	public Object[][] getUserData() {
 		Object[][] userData = ExcelUtil.getTestData("userdata");
@@ -27,11 +28,11 @@ public class CreateUserTest {
 //											"1234567891", "https://test123.com", "Vijay bank layout Begur", "active");		
 		userDataCreationTemplate user = new userDataCreationTemplate(firstname, lastname, gender, dob, email, phonenumber,
 				website, address, status);
-		tokenAuth.put("Authorization", "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq");
+		tokenAuth.put("Authorization", "Bearer " + "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq");
 		Response response = RestClient.doPOST("JSON", "https://gorest.co.in", "/public-api/users",
 				tokenAuth, null, true, user);
 		System.out.println(response.getStatusCode());
-		System.out.println(response.prettyPrint());
+//		System.out.println(response.prettyPrint());
 		System.out.println("=======================");
 	}
 }
