@@ -14,7 +14,8 @@ public class ExcelUtil {
 	
 //	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework\\src\\test\\resources\\GorestUserData.xlsx";
 	public static String dir =  System.getProperty("user.dir");
-	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework" + "\\src\\test\\resources\\GorestUserData.xlsx";
+//	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework" + "\\src\\test\\resources\\GorestUserData.xlsx";
+	public static String TESTDATA_FILE_PATH = "https://github.com/softram773/RestAPIFramework/blob/master/src/test/resources/GorestUserData.xlsx";
 	public static Workbook book;
 	public static Sheet sheet;
 	
