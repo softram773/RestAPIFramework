@@ -1,5 +1,6 @@
 package com.qa.api.gorest.tests;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.DataProvider;
@@ -12,8 +13,11 @@ import com.qa.api.gorest.util.ExcelUtil;
 import io.restassured.response.Response;
 
 public class CreateUserTest {
-	Map<String, String> tokenAuth;
+	Map<String, String> tokenAuth = new HashMap<String, String>();
+	String baseURI = "https://gorest.co.in";
+	String basePath = "/public-api/users";
 	String token = "Bearer " + "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq";
+	
 	@DataProvider
 	public Object[][] getUserData() {
 		Object[][] userData = ExcelUtil.getTestData("userdata");
@@ -23,16 +27,18 @@ public class CreateUserTest {
 	@Test(dataProvider = "getUserData")
 	public void createUserPostCall(String firstname, String lastname, String gender, String dob, String email, String phonenumber,
 			String website, String address, String status) {
-//		
-//		userDataCreationTemplate user = new userDataCreationTemplate("Neelesh", "Shastri", "male", "12-10-1985", "noreplay1@gmail.com", 
-//											"1234567891", "https://test123.com", "Vijay bank layout Begur", "active");		
+
+
+		
+		tokenAuth.put("Authorization", token);
+		System.out.println("tokenAuth ::: " + tokenAuth);
+		
 		userDataCreationTemplate user = new userDataCreationTemplate(firstname, lastname, gender, dob, email, phonenumber,
 				website, address, status);
-		tokenAuth.put("Authorization", "Bearer " + "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq");
-		Response response = RestClient.doPOST("JSON", "https://gorest.co.in", "/public-api/users",
+		Response response = RestClient.doPOST("JSON", baseURI, basePath,
 				tokenAuth, null, true, user);
-		System.out.println(response.getStatusCode());
-//		System.out.println(response.prettyPrint());
+		System.out.println("tokenAuth ::: " + response.getStatusCode());
+		System.out.println(response.prettyPrint());
 		System.out.println("=======================");
 	}
 }
