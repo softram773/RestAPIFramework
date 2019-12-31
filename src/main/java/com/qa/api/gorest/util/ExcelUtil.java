@@ -8,16 +8,24 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.beust.jcommander.Parameter;
 
 public class ExcelUtil {
 	
-//	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework\\src\\test\\resources\\GorestUserData.xlsx";
 	public static String dir =  System.getProperty("user.dir");
-//	public static String TESTDATA_FILE_PATH = "C:\\Users\\ramesh.biradar\\eclipse-workspace\\RestAPIFramework" + "\\src\\test\\resources\\GorestUserData.xlsx";
-	public static String TESTDATA_FILE_PATH = "https://github.com/softram773/RestAPIFramework/blob/master/src/test/resources/GorestUserData.xlsx";
+	public static String TESTDATA_FILE_PATH = dir + "\\src\\test\\resources\\GorestUserData.xlsx";
 	public static Workbook book;
 	public static Sheet sheet;
+
+	
+//	@Test
+//	@Parameters({"name"})
+//	public void readExcel(String name) {
+//		TESTDATA_FILE_PATH = name;
+//	}
 	
 
 	public static Object[][] getTestData(String sheetName) {

@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
+  <parameter name="dataFile" value="/RestAPIFramework/src/test/resources/GorestUserData.xlsx"></parameter>
     <classes>
       <class name="com.qa.api.gorest.tests.CreateUserTest"/>
       <class name="com.qa.api.gorest.tests.GetImgurAPI"/>
