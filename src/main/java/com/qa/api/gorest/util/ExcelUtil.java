@@ -16,17 +16,9 @@ import com.beust.jcommander.Parameter;
 public class ExcelUtil {
 	
 	public static String dir =  System.getProperty("user.dir");
-	public static String TESTDATA_FILE_PATH = dir + "\\src\\test\\resources\\GorestUserData.xlsx";
+	public static String TESTDATA_FILE_PATH = dir + "/src/test/resources/GorestUserData.xlsx";
 	public static Workbook book;
 	public static Sheet sheet;
-
-	
-//	@Test
-//	@Parameters({"name"})
-//	public void readExcel(String name) {
-//		TESTDATA_FILE_PATH = name;
-//	}
-	
 
 	public static Object[][] getTestData(String sheetName) {
 		try {
