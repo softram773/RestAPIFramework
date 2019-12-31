@@ -14,7 +14,7 @@ public class GetUserAPI {
 
 	String baseURI = "https://gorest.co.in";
 	String basePath = "/public-api/users";
-	String token = "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq";
+	String token = "Bearer " + "DsPMW-pp8OGygLeH5nFJjyGRwnfGoHr-3rGq";
 	Map<String, String> tokenAuth;
 	
 	@Test(priority = 1)

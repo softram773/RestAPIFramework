@@ -3,7 +3,6 @@ package com.qa.api.gorest.tests;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.codehaus.groovy.syntax.TokenMismatchException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

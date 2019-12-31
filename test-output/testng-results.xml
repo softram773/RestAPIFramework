@@ -2,19 +2,19 @@
 <testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-12-04T02:01:37Z" name="Default suite" finished-at="2019-12-04T02:01:42Z" duration-ms="4558">
+  <suite started-at="2019-12-31T04:34:31Z" name="Default suite" finished-at="2019-12-31T04:34:48Z" duration-ms="17070">
     <groups>
     </groups>
-    <test started-at="2019-12-04T02:01:37Z" name="Default test" finished-at="2019-12-04T02:01:42Z" duration-ms="4558">
+    <test started-at="2019-12-31T04:34:31Z" name="Default test" finished-at="2019-12-31T04:34:48Z" duration-ms="17070">
       <class name="com.qa.api.gorest.tests.GetImgurAPI">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.api.gorest.tests.GetImgurAPI@209da20d]" started-at="2019-12-04T02:01:37Z" name="setUp" finished-at="2019-12-04T02:01:40Z" duration-ms="3365" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.api.gorest.tests.GetImgurAPI@209da20d]" started-at="2019-12-31T04:34:31Z" name="setUp" finished-at="2019-12-31T04:34:33Z" duration-ms="2819" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="getAccountBase()[pri:0, instance:com.qa.api.gorest.tests.GetImgurAPI@209da20d]" started-at="2019-12-04T02:01:40Z" name="getAccountBase" finished-at="2019-12-04T02:01:42Z" duration-ms="1173" status="PASS">
+        <test-method signature="uploadImagePostAPITest()[pri:0, instance:com.qa.api.gorest.tests.GetImgurAPI@209da20d]" started-at="2019-12-31T04:34:33Z" name="uploadImagePostAPITest" finished-at="2019-12-31T04:34:48Z" duration-ms="14232" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getAccountBase -->
+        </test-method> <!-- uploadImagePostAPITest -->
       </class> <!-- com.qa.api.gorest.tests.GetImgurAPI -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

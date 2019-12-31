@@ -69,6 +69,9 @@ public class RestClient {
 	
 	public static RequestSpecification createRequest(String contentType, Map<String, String> token, Map<String, String> params, boolean log) {
 		RequestSpecification request;
+		String dir = System.getProperty("user.dir");
+		String filepath = dir + "/src/test/resources/OnlyRamesh.jpg"; 
+		
 		
 		if(log) {
 			request = RestAssured.given().log().all();
@@ -90,7 +93,7 @@ public class RestClient {
 				break;
 			case "XML" : request.contentType(ContentType.XML);
 				break;
-			case "multipart" : request.multiPart("image", new File("C:\\Users\\ramesh.biradar\\Pictures\\OnlyRamesh.jpg"));
+			case "multipart" : request.multiPart("image", new File(filepath));
 			break;
 			default:
 				System.out.println("No Valid content type");
